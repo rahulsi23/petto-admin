@@ -1,0 +1,2113 @@
+{
+	"info": {
+		"_postman_id": "9fee36c7-7efa-41ef-9a3c-c724be8e1dc0",
+		"name": "Petto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27725056",
+		"_collection_link": "https://www.postman.com/science-saganist-65532875/workspace/my-local/collection/27725056-9fee36c7-7efa-41ef-9a3c-c724be8e1dc0?action=share&source=collection_link&creator=27725056"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Log In",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\" : \"\",\r\n    \"role\"  : \"\",\r\n    \"device_token\" : \"\",\r\n    \"latitude\"  : \"\",\r\n    \"longitude\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/auth/login",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"admin@gmail.com\",\r\n    \"password\"  : \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/auth/admin/login",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"auth",
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"admin@gmail.com\",\r\n    \"password\"  : \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/auth/admin/",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"auth",
+								"admin",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify OTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\" : \"8109907144\",\r\n    \"otp\" : \"7455\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/auth/verify-otp",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"auth",
+								"verify-otp"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Rahul",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "rahul@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"type": "text"
+								},
+								{
+									"key": "profile_img",
+									"type": "file",
+									"src": "/C:/Users/HP/Pictures/download (3).jpg"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Baseurl}}/user/",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/user?userId=91bc8067-b854-4d30-b648-027b13bd5d1f",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "91bc8067-b854-4d30-b648-027b13bd5d1f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check IsOnline",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{adminAuthToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/user/isOnline?userId=c0f3efd7-1835-4708-9b5e-ccc99a5ef9cb&action=on",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"user",
+								"isOnline"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "c0f3efd7-1835-4708-9b5e-ccc99a5ef9cb"
+								},
+								{
+									"key": "action",
+									"value": "on"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{adminAuthToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/user/all?role=DRIVER",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"user",
+								"all"
+							],
+							"query": [
+								{
+									"key": "role",
+									"value": "DRIVER"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Common",
+			"item": [
+				{
+					"name": "SetActive Status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{adminAuthToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Rahul",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "rahul@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"type": "text"
+								},
+								{
+									"key": "profile_img",
+									"type": "file",
+									"src": "/C:/Users/HP/Pictures/download (3).jpg"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Baseurl}}/common/PRODUCT/DEACTIVE/6328aefb-a3af-4f49-90ef-d994afa59910",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"common",
+								"PRODUCT",
+								"DEACTIVE",
+								"6328aefb-a3af-4f49-90ef-d994afa59910"
+							],
+							"query": [
+								{
+									"key": "1",
+									"value": "USER",
+									"disabled": true
+								},
+								{
+									"key": "2",
+									"value": "PET",
+									"disabled": true
+								},
+								{
+									"key": "3",
+									"value": "PRODUCT",
+									"disabled": true
+								},
+								{
+									"key": "4",
+									"value": "PRODUCT_CATEGORY",
+									"disabled": true
+								},
+								{
+									"key": "5",
+									"value": "ALLERGY",
+									"disabled": true
+								},
+								{
+									"key": "6",
+									"value": "BREED",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pet",
+			"item": [
+				{
+					"name": "Add Pet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "pet_name",
+									"value": "Dog",
+									"type": "text"
+								},
+								{
+									"key": "pet_img",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Baseurl}}/pet/",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"pet",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Pet",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "pet_name",
+									"value": "Dog",
+									"type": "text"
+								},
+								{
+									"key": "pet_img",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Baseurl}}/pet/67e8e184-3a4a-4e5a-98f3-6154754a42f7",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"pet",
+								"67e8e184-3a4a-4e5a-98f3-6154754a42f7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Pets",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"pet_name\":\"cat\", \"pet_img\":\"dfd\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/pet/",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"pet",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Pet",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"pet_name\":\"cat\", \"pet_img\":\"dfd\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/pet/77e037b4-dde7-4755-8944-b286d1baff8f",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"pet",
+								"77e037b4-dde7-4755-8944-b286d1baff8f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pet Type",
+			"item": [
+				{
+					"name": "Add Pet Type",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"pet_type_name\":\"seniour\" , \"pet_id\" : \"67e8e184-3a4a-4e5a-98f3-6154754a42f7\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/pet_type/",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"pet_type",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Pet Type",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"pet_type_name\":\"seniour updated\" , \"pet_id\" : \"67e8e184-3a4a-4e5a-98f3-6154754a42f7\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/pet_type/7ed705f6-32e2-4cf6-8bc2-0d9ce067c9df",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"pet_type",
+								"7ed705f6-32e2-4cf6-8bc2-0d9ce067c9df"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Pet Type",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"pet_type_name\":\"kitty\" , \"pet_id\" : \"b79ce9cf-55d6-43ec-82f7-f738f73dfa52\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/pet_type/",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"pet_type",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pet Bread",
+			"item": [
+				{
+					"name": "Add Pet Bread",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \"pet_bread_name\":\"lebrador\", \"pet_bread_description\":\"form thailand\", \"pet_id\" : \"67e8e184-3a4a-4e5a-98f3-6154754a42f7\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/pet_bread/",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"pet_bread",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Pet Bread",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \"pet_bread_name\":\"persian cat\", \"pet_bread_description\":\"form thailand\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/pet_bread/b22bc678-e600-4e4d-97a4-b7c9ae574a5c",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"pet_bread",
+								"b22bc678-e600-4e4d-97a4-b7c9ae574a5c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Pet Bread",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{adminAuthToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/pet_bread/",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"pet_bread",
+								""
+							],
+							"query": [
+								{
+									"key": "petId",
+									"value": "67e8e184-3a4a-4e5a-98f3-6154754a42f7",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pet Allergy",
+			"item": [
+				{
+					"name": "Add Pet Allergy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"pet_allergy_name\" : \" suagr \", \"pet_allergy_description\" : \"resending Hairfall\", \"pet_id\" : [\"67e8e184-3a4a-4e5a-98f3-6154754a42f7\"]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/pet_allergy/",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"pet_allergy",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Pet Allergy",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"pet_allergy_name\" : \" suagr updated uuuu\", \"pet_allergy_description\" : \"resending Hairfalluuu\" , \"pet_id\" : [\"67e8e184-3a4a-4e5a-98f3-6154754a42f7\" , \"32d15c76-9443-401e-8ae2-81b3bfc29e94\"]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/pet_allergy/c587579e-fa1d-4007-aeed-bda3401e8f73",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"pet_allergy",
+								"c587579e-fa1d-4007-aeed-bda3401e8f73"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Pet Allergy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/pet_allergy/",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"pet_allergy",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Pet Alergy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/pet_allergy/c587579e-fa1d-4007-aeed-bda3401e8f73",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"pet_allergy",
+								"c587579e-fa1d-4007-aeed-bda3401e8f73"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product Category",
+			"item": [
+				{
+					"name": "Add Product Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"product_category_name\" : \"food\", \"product_category_description\" : \"its a food\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/product_category/",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"product_category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProduct Category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"product_category_name\" : \"foods\", \"product_category_description\" : \"its a foods\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/product_category/6f7a599c-800f-4724-8c35-d54fc5f9f681",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"product_category",
+								"6f7a599c-800f-4724-8c35-d54fc5f9f681"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Product Category",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"product_category_name\" : \"food\", \"product_category_description\" : \"its a food\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/product_category/",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"product_category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product Category",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/product_category/31a0237e-3ed9-4f40-b0a0-524c2d4f7798",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"product_category",
+								"31a0237e-3ed9-4f40-b0a0-524c2d4f7798"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Get All Product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{adminAuthToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/product",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/product/filter?data={\"petId\":[],\"petTypeId\":[],\"petBreadId\":[],\"petAllergyId\":[],\"productCategoryId\":[],\"search\":\"\"}",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"product",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "data",
+									"value": "{\"petId\":[],\"petTypeId\":[],\"petBreadId\":[],\"petAllergyId\":[],\"productCategoryId\":[],\"search\":\"\"}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get & Add & Remove Fav Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/product/fav/?productId=a4ba376e-c547-446c-ab37-c79f3bd442b3&action=ADD",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"product",
+								"fav",
+								""
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "a4ba376e-c547-446c-ab37-c79f3bd442b3"
+								},
+								{
+									"key": "action",
+									"value": "ADD"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/product/a4ba376e-c547-446c-ab37-c79f3bd442b3",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"product",
+								"a4ba376e-c547-446c-ab37-c79f3bd442b3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/product/a6b8320e-8c61-4ceb-a958-0d60f94b5152",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"product",
+								"a6b8320e-8c61-4ceb-a958-0d60f94b5152"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_name",
+									"value": "Product two",
+									"type": "text"
+								},
+								{
+									"key": "product_description",
+									"value": "Its a product",
+									"type": "text"
+								},
+								{
+									"key": "product_price",
+									"value": "2000",
+									"type": "text"
+								},
+								{
+									"key": "petId[]",
+									"value": "67e8e184-3a4a-4e5a-98f3-6154754a42f7",
+									"type": "text"
+								},
+								{
+									"key": "petId[]",
+									"value": "sdsds",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "petTypeId[]",
+									"value": "7ed705f6-32e2-4cf6-8bc2-0d9ce067c9df",
+									"type": "text"
+								},
+								{
+									"key": "petTypeId[]",
+									"value": "dfghdfhf",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "petBreadId[]",
+									"value": "dfdd6e69-93c9-4500-b4e2-bd8c51cbe296",
+									"type": "text"
+								},
+								{
+									"key": "petBreadId[]",
+									"value": "fgfg",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "petAllergyId[]",
+									"value": "ee650c87-9a73-4105-893e-67b98b798f29",
+									"type": "text"
+								},
+								{
+									"key": "petAllergyId[]",
+									"value": "fgfgdf",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "productCategoryId",
+									"value": "6f7a599c-800f-4724-8c35-d54fc5f9f681",
+									"type": "text"
+								},
+								{
+									"key": "product_img",
+									"type": "file",
+									"src": "/C:/Users/HP/Pictures/download_.jpg"
+								},
+								{
+									"key": "weight",
+									"value": "200",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Baseurl}}/product/",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_name",
+									"value": "Product two vv",
+									"type": "text"
+								},
+								{
+									"key": "product_description",
+									"value": "Its a productvvvvv",
+									"type": "text"
+								},
+								{
+									"key": "product_price",
+									"value": "2000",
+									"type": "text"
+								},
+								{
+									"key": "petId[]",
+									"value": "67e8e184-3a4a-4e5a-98f3-6154754a42f7",
+									"type": "text"
+								},
+								{
+									"key": "petId[]",
+									"value": "vvvvv",
+									"type": "text"
+								},
+								{
+									"key": "petTypeId[]",
+									"value": "7ed705f6-32e2-4cf6-8bc2-0d9ce067c9df",
+									"type": "text"
+								},
+								{
+									"key": "petTypeId[]",
+									"value": "vvvv",
+									"type": "text"
+								},
+								{
+									"key": "petBreadId[]",
+									"value": "dfdd6e69-93c9-4500-b4e2-bd8c51cbe296",
+									"type": "text"
+								},
+								{
+									"key": "petBreadId[]",
+									"value": "vvv",
+									"type": "text"
+								},
+								{
+									"key": "petAllergyId[]",
+									"value": "ee650c87-9a73-4105-893e-67b98b798f29",
+									"type": "text"
+								},
+								{
+									"key": "petAllergyId[]",
+									"value": "vvv",
+									"type": "text"
+								},
+								{
+									"key": "productCategoryId",
+									"value": "6f7a599c-800f-4724-8c35-d54fc5f9f681",
+									"type": "text"
+								},
+								{
+									"key": "product_img",
+									"type": "file",
+									"src": "/C:/Users/HP/Pictures/Capture.PNG"
+								},
+								{
+									"key": "weight",
+									"value": "200666",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Baseurl}}/product/a4ba376e-c547-446c-ab37-c79f3bd442b3",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"product",
+								"a4ba376e-c547-446c-ab37-c79f3bd442b3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Get All Cart",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/cart",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Cart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product_id\" : \"fb8a1241-18b8-4070-a760-8f315e7232fa\" , \r\n    \"quantity\"  : 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/cart/",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"cart",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Get All Order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/order?userId=&type=DELIVERING&type=DELIVERED&type=PENDING",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"order"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": ""
+								},
+								{
+									"key": "type",
+									"value": "DELIVERING"
+								},
+								{
+									"key": "type",
+									"value": "DELIVERED"
+								},
+								{
+									"key": "type",
+									"value": "PENDING"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{adminAuthToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/order/e974196b-e8fc-474b-86dc-1806b0a8ce54",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"order",
+								"e974196b-e8fc-474b-86dc-1806b0a8ce54"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Place Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"addressId\" : \"4141f733-e8f2-4e6b-88e6-956ee7448568\",\r\n    \"payment_mode\" : \"ONLINE\",\r\n    \"payment_id\" : \"pay_NXTf8IEFfRgzqX\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/order/",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"order",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Order Status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"addressId\" : \"4141f733-e8f2-4e6b-88e6-956ee7448568\",\r\n    \"payment_mode\" : \"ONLINE\",\r\n    \"payment_id\" : \"pay_NXTf8IEFfRgzqX\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/order/07b09ac2-79b5-48ea-a3f3-11c76bf77958?action=DELIVERED",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"order",
+								"07b09ac2-79b5-48ea-a3f3-11c76bf77958"
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "DELIVERED",
+									"description": "value === \"DELIVERED\" || value === \"DELIVERING\" || value === \"PENDING\" || value == \"REJECTED\""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "Get All Address",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/user/address/",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"user",
+								"address",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Address",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n  \"address_Info\": \"zzzzzzzzz\",\r\n  \"mobile_number\": \"2222222222\",\r\n  \"landmark\": \"zzzzzzzzz\",\r\n  \"house_number\": \"545614\",\r\n  \"type\": \"HOME\",\r\n  \"lat\" : \"654465465\",\r\n  \"long\" : \"654465465\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/user/address/",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"user",
+								"address",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Address",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/user/address/064dcf16-e36b-4f6b-b17c-3600648aca4f",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"user",
+								"address",
+								"064dcf16-e36b-4f6b-b17c-3600648aca4f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Primary Address",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/user/address/ab725b9f-ac35-41fe-8fee-d00cc13263e8",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"user",
+								"address",
+								"ab725b9f-ac35-41fe-8fee-d00cc13263e8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Faq",
+			"item": [
+				{
+					"name": "Get faq",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/faq",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"faq"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add faq",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"question\" : \"Faq one\", \"answer\" : \"Faq Answer one\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/faq",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"faq"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update faq",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"question\" : \"Faq one update\", \"answer\" : \"Faq Answer one updated\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/faq/52c03212-5c03-47f7-b2b1-545cf1c1c273",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"faq",
+								"52c03212-5c03-47f7-b2b1-545cf1c1c273"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete faq",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/faq/83fa7973-5f9c-4e85-b9f9-15bbe4b068c0",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"faq",
+								"83fa7973-5f9c-4e85-b9f9-15bbe4b068c0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Home",
+			"item": [
+				{
+					"name": "Phone Home Page Data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/home/",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"home",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Home Page Data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/home/info",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"home",
+								"info"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delivery",
+			"item": [
+				{
+					"name": "Assign Delivery Boy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orderId\" : \"a0892808-423e-4d8e-8991-8d6974271f34\",\r\n    \"userId\" : \"91bc8067-b854-4d30-b648-027b13bd5d1f\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/delivery/",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"delivery",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Order Delivered",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orderId\" : \"a0892808-423e-4d8e-8991-8d6974271f34\",\r\n    \"otp\" : \"0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/delivery/delivered",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"delivery",
+								"delivered"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Order Paid",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orderId\" : \"2f5ac349-1b66-4d79-98cc-0e1187a053e7\",\r\n    \"payment_id\" : \"0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Baseurl}}/delivery/paid",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"delivery",
+								"paid"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delivery Boy Order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{adminAuthToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Baseurl}}/delivery/?userId=91bc8067-b854-4d30-b648-027b13bd5d1f",
+							"host": [
+								"{{Baseurl}}"
+							],
+							"path": [
+								"delivery",
+								""
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "91bc8067-b854-4d30-b648-027b13bd5d1f"
+								},
+								{
+									"key": "type",
+									"value": "HISTORY",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "DELIVERING",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rtc",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"userId\" : 1, \"channelName\":\"ambujtripathu\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/rtcToken?chanchannelName=ambuj",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rtcToken"
+					],
+					"query": [
+						{
+							"key": "chanchannelName",
+							"value": "ambuj"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rtm",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"userId\" : 1, \"channelName\":\"ambujtripathu\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/rtmToken?account=0066a54e722cb4c41308f0b8ce310a51b2cIADzOgFl1k8JnPZawJfkU8IYySis3+o7fUYUm92A+f9nBIWcQB8AAAAAIgCibhiGzKHUZQQAAQBcXtNlAgBcXtNlAwBcXtNlBABcXtNl",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rtmToken"
+					],
+					"query": [
+						{
+							"key": "account",
+							"value": "0066a54e722cb4c41308f0b8ce310a51b2cIADzOgFl1k8JnPZawJfkU8IYySis3+o7fUYUm92A+f9nBIWcQB8AAAAAIgCibhiGzKHUZQQAAQBcXtNlAgBcXtNlAwBcXtNlBABcXtNl"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Notify",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"userId\": \"1\" , \"token\":\"token\"  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/notification",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notification"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Baseurl",
+			"value": "http://localhost:3000",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "Baseurl",
+			"value": "http://192.168.1.13:3000",
+			"type": "string"
+		},
+		{
+			"key": "authToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhYzliMDJjNC0zNjRlLTRkZTgtOTY5NS04NDkxNGU0Mzk0MGQiLCJpYXQiOjE3MDU0ODc2MTYsImV4cCI6MTcwNTU3NDAxNn0.2-5PZFJqxH8DMSt-FdaEJ4pYvF1l9-BpU0Iq1ymna5I",
+			"type": "string"
+		},
+		{
+			"key": "adminAuthToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1OGQ2YTVlYi05ZmEwLTRjYzktYjhiZi0zOTFhY2M1YTE3YzEiLCJpYXQiOjE3MDU2NDcxNDAsImV4cCI6MTc0ODg0NzE0MH0.otmyrpBq19_4O9PghkOzAM-3KLXRAwLdLcIKrCiNVWo",
+			"type": "string"
+		},
+		{
+			"key": "driverToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDlmZjY2MS1kYWM1LTQ2ZjAtODA1Ni1kZTMxNGQwODM0OGMiLCJpYXQiOjE3MDY1MjI5NzgsImV4cCI6MTc0OTcyMjk3OH0.E2YbLMO8GbQcXJmm7B_2pddDQ6dRPztejnrhADwQLm0",
+			"type": "string"
+		}
+	]
+}
